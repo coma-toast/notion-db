@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Client } from '@notionhq/client';
+import { Client, isFullDatabase } from '@notionhq/client';
 import { ConfigService } from '@nestjs/config';
+import { DatabaseObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 @Injectable()
 export class NotionService {
@@ -13,13 +14,19 @@ export class NotionService {
     console.log('Notion client initialized');
   }
 
-  async getDatabases(): Promise<any[]> {
-    // console.log(this.configService.get<string>('NOTION_SECRET'));
+  async getDatabases(): Promise<DatabaseObjectResponse[]> {
+    const results: DatabaseObjectResponse[] = [];
     const response = await this.notionClient.search({
       filter: { value: 'database', property: 'object' },
     });
-    console.log(response);
-    return response.results || [];
+
+    for (const result of response.results) {
+      if (isFullDatabase(result)) {
+        results.push(result);
+      }
+    }
+
+    return results;
   }
 
   async createNewPage(databaseId: string, pageName: string): Promise<void> {
