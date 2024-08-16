@@ -6,7 +6,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NotionService } from './notion/notion.service';
 import { NotionController } from './notion/notion.controller';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -27,9 +28,9 @@ import { UsersModule } from './users/users.module';
     //   }),
     //   inject: [ConfigService],
     // }),
-
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     AuthModule,
-    UsersModule,
+    UserModule,
   ],
   controllers: [AppController, NotionController],
   providers: [AppService, DbService, NotionService],

@@ -6,7 +6,12 @@ model Ticket {
   summary   String?
   status     TicketStatus @default(OPEN)
   description String?
-  assignee String?
+  assignee Person? @relation(fields: [id], references: [id])
+  json Json?
+  spring String?
+  fixVersion String?
+  issueType String?
+  codeSource String?
 }
 
 enum TicketStatus {
@@ -15,3 +20,4 @@ enum TicketStatus {
   RESOLVED
   CLOSED
 }
+
