@@ -4,7 +4,7 @@ model User {
   email     String   @unique
   name      String?
   role      Role     @default(USER)
-  notionDb String?
+  notionDb  String?
 }
 
 enum Role {

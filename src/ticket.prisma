@@ -1,0 +1,22 @@
+model Ticket {
+  id          Int          @id @default(autoincrement())
+  createdAt   DateTime     @default(now())
+  jiraId      String       @unique
+  title       String?
+  summary     String?
+  status      TicketStatus @default(OPEN)
+  description String?
+  json        Json?
+  spring      String?
+  fixVersion  String?
+  issueType   String?
+  codeSource  String?
+  assignee    Person       @relation(fields: [id], references: [id])
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}

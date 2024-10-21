@@ -1,6 +1,0 @@
-model Person {
-  id    Int    @id @default(autoincrement())
-  jiraId String @unique
-  name  String
-  tickets Ticket[]
-}

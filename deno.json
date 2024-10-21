@@ -1,0 +1,40 @@
+{
+    "lint": {
+        "include": [
+            "**/*.ts"
+        ],
+        "exclude": [
+            "node_modules",
+            "test",
+            "dist",
+            "**/*spec.ts"
+        ],
+        "rules": {
+            "ban-types": true,
+            "no-explicit-any": true,
+            "no-implicit-dependencies": false,
+            "no-magic-numbers": true,
+            "no-object-literal-type-assertion": false,
+            "no-submodule-imports": false,
+            "no-unsafe-any": true,
+            "no-unsafe-finally": true,
+            "no-unsafe-return": true,
+            "no-var": true,
+            "no-var-requires": true,
+            "prefer-conditional-expression": false,
+            "prefer-object-spread": false,
+            "prefer-template": false
+        }
+    },
+    "compilerOptions": {
+      "module": "commonjs",
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "target": "ES2021",
+      "strictNullChecks": false,
+      "noImplicitAny": false,
+      "strictBindCallApply": false,
+      "forceConsistentCasingInFileNames": false,
+      "noFallthroughCasesInSwitch": false
+    }
+}

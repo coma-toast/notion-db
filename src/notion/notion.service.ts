@@ -3,6 +3,9 @@ import { Client, isFullDatabase } from '@notionhq/client';
 import { ConfigService } from '@nestjs/config';
 import { DatabaseObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
+// * For reference:
+// https://github.com/makenotion/notion-sdk-js
+
 @Injectable()
 export class NotionService {
   private readonly notionClient: Client;
